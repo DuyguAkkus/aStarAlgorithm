@@ -1,0 +1,93 @@
+@{
+    var steps = ViewBag.Steps as List<PuzzleState>;
+    var error = ViewBag.ErrorMessage as string;
+}
+
+<div class="container py-4">
+    <h2 class="text-center text-pink mb-4">
+        <i class="bi bi-check2-square me-2"></i>Çözüm Adımları
+    </h2>
+    <div class="d-flex justify-content-end mb-3">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-pink btn-lg">
+            <i class="bi bi-arrow-counterclockwise me-1"></i> Başa Dön
+        </a>
+    </div>
+
+    @if (steps != null && steps.Count > 0)
+    {
+        <div class="card shadow-sm mb-4 step-card">
+            <div class="card-header bg-pink-gradient text-white fw-semibold">
+                <i class="bi bi-flag me-1"></i>Başlangıç & Hedef Durum
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-md-6 mb-3">
+                        <h5 class="text-pink">Başlangıç Durumu</h5>
+                        <div class="puzzle-grid">
+                            @for (int i = 0; i < 3; i++)
+                            {
+                                for (int j = 0; j < 3; j++)
+                                {
+                                    var value = steps[0].Tiles[i, j];
+                                    string display = value == 0 ? "" : value.ToString();
+                                    string cssClass = value == 0 ? "cell blank" : "cell";
+                                    <div class="@cssClass">@display</div>
+                                }
+                            }
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <h5 class="text-pink">Hedef Durumu</h5>
+                        <div class="puzzle-grid">
+                            @{
+                                var goal = steps.Last().Tiles;
+                            }
+                            @for (int i = 0; i < 3; i++)
+                            {
+                                for (int j = 0; j < 3; j++)
+                                {
+                                    var value = goal[i, j];
+                                    string display = value == 0 ? "" : value.ToString();
+                                    string cssClass = value == 0 ? "cell blank" : "cell";
+                                    <div class="@cssClass">@display</div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sonraki adımları ayrı foreach ile -->
+        int index = 1;
+        foreach (var state in steps.Skip(1))
+        {
+            <div class="card shadow-sm mb-4 step-card">
+                <div class="card-header bg-pink-gradient text-white fw-semibold">
+                    <i class="bi bi-caret-right-fill me-1"></i>Adım @index
+                </div>
+                <div class="card-body">
+                    <div class="puzzle-grid">
+                        @for (int i = 0; i < 3; i++)
+                        {
+                            for (int j = 0; j < 3; j++)
+                            {
+                                var value = state.Tiles[i, j];
+                                string display = value == 0 ? "" : value.ToString();
+                                string cssClass = value == 0 ? "cell blank" : "cell";
+                                <div class="@cssClass">@display</div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            index++;
+        }
+    }
+
+    else
+    {
+        <div class="alert alert-warning text-center">Çözüm adımı bulunamadı.</div>
+    }
+</div>

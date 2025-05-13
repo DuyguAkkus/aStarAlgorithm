@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - aStarAlgorithm</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/index.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/aStarAlgorithm.styles.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+</head>
+<body>
+
+<header class="main-header shadow-sm sticky-top">
+    <div class="container d-flex justify-content-between align-items-center py-3">
+        <h1 class="logo m-0">
+            <a href="/" class="text-white text-decoration-none">aStarAlgorithm</a>
+        </h1>
+        <nav>
+            <ul class="nav">
+                <a class="nav-link text-white fw-semibold"
+                   asp-controller="Home" asp-action="Courses" style="font-size: 1.05rem;">
+                    <i class="bi bi-journal-text me-1"></i> Konu Anlatımları
+                </a>
+
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container text-center">
+        &copy; 2025 - aStarAlgorithm - <a asp-area="" asp-controller="Home" >duygu</a>
+    </div>
+</footer>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

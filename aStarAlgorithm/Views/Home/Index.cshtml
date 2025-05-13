@@ -1,0 +1,105 @@
+﻿@model PuzzleInputViewModel
+
+<div class="container py-4">
+
+    <h2 class="text-center text-pink mb-4">8-Taş Bulmacası</h2>
+
+    <div class="card shadow-sm mb-4 puzzle-form-card">
+        <div class="card-header bg-pink-gradient text-white d-flex align-items-center">
+            <i class="bi bi-grid-3x3-gap-fill fs-4 me-2"></i>
+            <span class="fs-5 fw-semibold">Çözüm Formu</span>
+        </div>
+        <div class="card-body">
+            <form asp-action="Solve" method="post">
+                <div class="form-group mb-3">
+                    <label class="form-label text-pink fw-semibold">
+                        <i class="bi bi-box-arrow-in-left me-1"></i> Başlangıç Durumu (9 rakam)
+                    </label>
+                    <input asp-for="Start" class="form-control form-control-lg border-pink" placeholder="Örn: 413285760" />
+                    <span asp-validation-for="Start" class="text-danger small"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="form-label text-pink fw-semibold">
+                        <i class="bi bi-flag-fill me-1"></i> Hedef Durumu (9 rakam)
+                    </label>
+                    <input asp-for="Goal" class="form-control form-control-lg border-pink" placeholder="Örn: 123456780" />
+                    <span asp-validation-for="Goal" class="text-danger small"></span>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-pink px-4 py-2">
+                        <i class="bi bi-play-fill me-1"></i> Çöz
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="mb-4">
+        <h4 class="text-pink mb-3">
+            <i class="bi bi-lightbulb-fill me-2"></i>Hazır Çözülebilir Durumlar
+        </h4>
+
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered text-center align-middle bg-white shadow-sm rounded">
+                <thead class="table-pink text-white">
+                <tr>
+                    <th><i class="bi bi-hash"></i></th>
+                    <th><i class="bi bi-box-seam"></i> Başlangıç</th>
+                    <th><i class="bi bi-flag-fill"></i> Hedef</th>
+                    <th><i class="bi bi-arrow-repeat"></i> Uygula</th>
+                </tr>
+                </thead>
+                <tbody>
+                @{
+                    var examples = new List<dynamic>
+                    {
+                        new { Start = "413285760", Goal = "123456780" },
+                        new { Start = "123456708", Goal = "123456780" },
+                        new { Start = "281043765", Goal = "123456780" },
+                        new { Start = "724506831", Goal = "123456780" },
+                        new { Start = "120453786", Goal = "123456780" },
+                        new { Start = "123456078", Goal = "123456780" },
+                        new { Start = "134862705", Goal = "123456780" },
+                        new { Start = "243186705", Goal = "123456780" },
+                        new { Start = "735204861", Goal = "123456780" },
+                        new { Start = "431867205", Goal = "123456780" }
+
+                    };
+
+                    int count = 1;
+                    foreach (var item in examples)
+                    {
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.Start</td>
+                            <td>@item.Goal</td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-outline-pink"
+                                        onclick="fillPuzzle('@item.Start', '@item.Goal')">
+                                    <i class="bi bi-magic"></i> Uygula
+                                </button>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function fillPuzzle(start, goal) {
+            document.querySelector('input[name="Start"]').value = start;
+            document.querySelector('input[name="Goal"]').value = goal;
+        }
+    </script>
+}

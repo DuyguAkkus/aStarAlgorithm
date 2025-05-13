@@ -1,0 +1,131 @@
+/* Pembe tema renkleri */
+.text-pink {
+    color: #d63384;
+}
+.bg-pink-gradient {
+    background: linear-gradient(to right, #f78fb3, #d63384);
+}
+
+.border-pink {
+    border: 2px solid #f78fb3;
+}
+.btn-pink {
+    background-color: #d63384;
+    color: white;
+    border: none;
+}
+
+.btn-pink:hover {
+    background-color: #c12f76;
+}
+
+.btn-outline-pink {
+    border-color: #d63384;
+    color: #d63384;
+}
+
+.btn-outline-pink:hover {
+    background-color: #d63384;
+    color: white;
+}
+
+.table-pink {
+    background-color: #d63384;
+}
+.puzzle-form-card {
+    border: none;
+    background-color: #fff5fa; /* çok açık pembe */
+    border-radius: 12px;
+}
+
+.form-control:focus {
+    border-color: #f78fb3 !important;
+    box-shadow: 0 0 0 0.2rem rgba(247, 143, 179, 0.25);
+}
+
+
+
+.main-header {
+    background: linear-gradient(to right, #ff80ab, #d63384);
+    color: white;
+    z-index: 1030;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.nav-link {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+}
+
+
+
+/* Grid yapı */
+.puzzle-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(3, 60px);
+    gap: 6px;
+    justify-content: center;
+}
+
+/* Hücre stilleri */
+.cell {
+    background-color: #fce4ec;
+    border: 2px solid #f78fb3;
+    text-align: center;
+    line-height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: transform 0.2s ease;
+}
+
+.cell:hover {
+    transform: scale(1.05);
+}
+
+.blank {
+    background-color: #ffe3ee;
+    color: transparent;
+}
+
+/* Kart yapısı */
+.step-card {
+    border-radius: 12px;
+    background-color: #fffafd;
+}
+
+/* Ortak pembe başlık */
+.bg-pink-gradient {
+    background: linear-gradient(to right, #f78fb3, #d63384);
+    color: white;
+}
+
+.text-pink {
+    color: #d63384;
+}
+.btn-outline-pink {
+    border: 2px solid #d63384;
+    color: #d63384;
+    transition: 0.3s;
+    align-items: flex-end;
+}
+
+.btn-outline-pink:hover {
+    background-color: #d63384;
+    color: white;
+}
+.bg-light-pink {
+    background-color: #fff5fa;
+}
+
